@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//script yg handle moevement dari particle player
+
 public class ParticleMovement : MonoBehaviour
 {
     void Update()

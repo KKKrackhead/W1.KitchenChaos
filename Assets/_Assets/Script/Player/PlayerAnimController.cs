@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//script yang handle animasi player
+
+
 public class PlayerAnimController : MonoBehaviour
 {
     void Update()
