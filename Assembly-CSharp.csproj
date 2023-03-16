@@ -57,15 +57,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Assets\Script\Counter\ClearCounter.cs" />
-    <Compile Include="Assets\_Assets\Script\Player\ParticleMovement.cs" />
-    <Compile Include="Assets\_Assets\Script\Player\PlayerAnimController.cs" />
-    <Compile Include="Assets\_Assets\Script\Player\GameInput.cs" />
-    <Compile Include="Assets\_Assets\Script\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\_Assets\PlayerInputActions.cs" />
-    <Compile Include="Assets\_Assets\Script\Player\PlayerInteractions.cs" />
     <Compile Include="Assets\_Assets\Script\Counter\SelectedCounterVisual.cs" />
-    <Compile Include="Assets\_Assets\Script\Ingredients\ScriptableIngredients.cs" />
+    <Compile Include="Assets\_Assets\PlayerInputActions.cs" />
+    <Compile Include="Assets\_Assets\Script\Player\ParticleMovement.cs" />
+    <Compile Include="Assets\_Assets\Script\IIngredientParents.cs" />
+    <Compile Include="Assets\_Assets\Script\Player\PlayerAnimController.cs" />
+    <Compile Include="Assets\_Assets\Script\Player\PlayerInteractions.cs" />
+    <Compile Include="Assets\_Assets\Script\Player\GameInput.cs" />
     <Compile Include="Assets\_Assets\Script\Ingredients\Ingredients.cs" />
+    <Compile Include="Assets\_Assets\Script\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\_Assets\Script\Ingredients\ScriptableIngredients.cs" />
+    <Compile Include="Assets\_Assets\Script\Counter\ContainerCounter.cs" />
+    <Compile Include="Assets\_Assets\Script\Counter\BaseCounter.cs" />
+    <Compile Include="Assets\_Assets\Script\Ingredients\ContainerAnimController.cs" />
+    <Compile Include="Assets\_Assets\Script\Counter\CuttingCounter.cs" />
+    <Compile Include="Assets\_Assets\Script\Ingredients\ScriptableCutIngredients.cs" />
+    <Compile Include="Assets\_Assets\Script\Counter\ProgressBarUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Assets\KitchenChaos_COMPLETE_PROJECT.txt" />

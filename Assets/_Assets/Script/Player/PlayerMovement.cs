@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 8.5f;
+    [SerializeField] float speed = 10f;
     [SerializeField] private GameInput gameinput;
     
     public bool isWalking;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
         isWalking = movedirection != Vector3.zero;
 
-        float rotatespeed = 6f;
+        float rotatespeed = 8f;
         transform.forward = Vector3.Slerp(transform.forward, movedirection, Time.deltaTime * rotatespeed);
 
         float playersize = .7f;

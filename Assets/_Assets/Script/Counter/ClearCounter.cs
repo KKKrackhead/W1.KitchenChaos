@@ -2,23 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour
+public class ClearCounter : BaseCounter
 {
-
     [SerializeField] private ScriptableIngredients ScriptableIngredients;
-    [SerializeField] private Transform counterTopPoint;
 
-    private Ingredients ingredients;
-
-    public void Interact()
+    public override void Interact(PlayerInteractions player)
     {
-        if (ingredients == null)
+        if (!HasIngredient())
         {
-            Transform ingredientsTransform = Instantiate(ScriptableIngredients.prefab, counterTopPoint);
-            ingredientsTransform.localPosition = Vector3.zero;
-
-            ingredients = ingredientsTransform.GetComponent<Ingredients>();
+            if (player.HasIngredient()) player.GetIngredient().SetIngredientParent(this);
+            else{}
         }
-        
+        else
+        {
+            if (player.HasIngredient()) { }
+            else GetIngredient().SetIngredientParent(player);
+        }
     }
 }

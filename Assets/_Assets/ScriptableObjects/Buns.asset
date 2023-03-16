@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0456771fcdf5ba540a3e5e7ea7db4618, type: 3}
   m_Name: Buns
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3812876574508226176, guid: bc49891f572f1164e9938f845ec37ab0, type: 3}
+  prefab: {fileID: 7384961211776867654, guid: d4a3a322ead9d934880fe6e75deee24f, type: 3}
   sprite: {fileID: 21300000, guid: 77b28124b8bda494381c80bd5aa42c22, type: 3}
   objName: Buns

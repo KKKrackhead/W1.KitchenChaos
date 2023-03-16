@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4255928425521495817
+--- !u!1 &7022853663059408959
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7396337651177374666}
-  - component: {fileID: -5822575786459594375}
+  - component: {fileID: 3276528479120821235}
+  - component: {fileID: 7950484671311065946}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
@@ -17,41 +17,41 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7396337651177374666
+--- !u!4 &3276528479120821235
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255928425521495817}
+  m_GameObject: {fileID: 7022853663059408959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8991873, y: -6.9622335, z: 5.5139112}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1506389884546923580}
+  - {fileID: 2992934754674901120}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5822575786459594375
+--- !u!114 &7950484671311065946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255928425521495817}
+  m_GameObject: {fileID: 7022853663059408959}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b12103da58a15648884e61e9313df91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scriptableIngredients: {fileID: 11400000, guid: 6b25e9377b48202468bff53a3259390b, type: 2}
---- !u!1001 &2309724926993607356
+--- !u!1001 &2117542049537922560
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7396337651177374666}
+    m_TransformParent: {fileID: 3276528479120821235}
     m_Modifications:
     - target: {fileID: 3812876574508226176, guid: 81e9fe7b3cd084242a088e945f531f38, type: 3}
       propertyPath: m_RootOrder
@@ -103,8 +103,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81e9fe7b3cd084242a088e945f531f38, type: 3}
---- !u!4 &1506389884546923580 stripped
+--- !u!4 &2992934754674901120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3812876574508226176, guid: 81e9fe7b3cd084242a088e945f531f38, type: 3}
-  m_PrefabInstance: {fileID: 2309724926993607356}
+  m_PrefabInstance: {fileID: 2117542049537922560}
   m_PrefabAsset: {fileID: 0}

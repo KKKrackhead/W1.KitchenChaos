@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteractions : MonoBehaviour
+public class PlayerInteractions : MonoBehaviour, IIngredientParents
 {
     public static PlayerInteractions Instance { get; private set; }
 
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
     } 
 
     [SerializeField] private GameInput gameInput;
+    [SerializeField] private Transform ingredientHoldPoint;
+
     private Vector3 lastDirection;
 
-    private ClearCounter selectedCounter;
+    private Ingredients ingredients;
+    private BaseCounter selectedCounter;
 
     private void Awake()
     {
@@ -30,11 +33,17 @@ public class PlayerInteractions : MonoBehaviour
     private void Start()
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction;
+        gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+    }
+
+    private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
+    {
+        if (selectedCounter != null) selectedCounter.InteractAlternate(this);
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-        if (selectedCounter != null) selectedCounter.Interact();
+        if (selectedCounter != null) selectedCounter.Interact(this);
     }
 
     private void Update()
@@ -48,16 +57,11 @@ public class PlayerInteractions : MonoBehaviour
         float InteractDistance = 2f;
         if (Physics.Raycast(transform.position, lastDirection, out RaycastHit raycastHit, InteractDistance))
         {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
             {
-                if (clearCounter != selectedCounter)
+                if (baseCounter != selectedCounter)
                 {
-                    selectedCounter = clearCounter;
-
-                    OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs
-                    {
-                        selectedCounter = selectedCounter
-                    });
+                    SetSelectedCounter(baseCounter);
                 }
             }
             else
@@ -72,7 +76,7 @@ public class PlayerInteractions : MonoBehaviour
     }
 
 
-    private void SetSelectedCounter(ClearCounter selectedCounter)
+    private void SetSelectedCounter(BaseCounter selectedCounter)
     {
         this.selectedCounter = selectedCounter;
 
@@ -80,5 +84,30 @@ public class PlayerInteractions : MonoBehaviour
         {
             selectedCounter = selectedCounter
         });
+    }
+
+    public Transform GetIngredientFollowTransform()
+    {
+        return ingredientHoldPoint;
+    }
+
+    public void SetIngredient(Ingredients ingredients)
+    {
+        this.ingredients = ingredients;
+    }
+
+    public Ingredients GetIngredient()
+    {
+        return ingredients;
+    }
+
+    public void ClearIngredient()
+    {
+        ingredients = null;
+    }
+
+    public bool HasIngredient()
+    {
+        return ingredients != null;
     }
 }

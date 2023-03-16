@@ -6,20 +6,50 @@ public class Ingredients : MonoBehaviour
 {
     [SerializeField] private ScriptableIngredients scriptableIngredients;
 
-    //private ClearCounter clearCounter;
+    private IIngredientParents ingredientParent;
     
     public ScriptableIngredients GetScriptableIngredients()
     {
         return scriptableIngredients;
     }
 
-    /*public void SetClearCounter(ClearCounter clearCounter)
+    public void SetIngredientParent(IIngredientParents ingredientParent)
     {
-        this.clearCounter = clearCounter;
+        if(this.ingredientParent != null)
+        {
+            this.ingredientParent.ClearIngredient();
+        }
+
+        this.ingredientParent = ingredientParent;
+
+        if (ingredientParent.HasIngredient())
+        {
+            Debug.LogError("Parent Already has Ingredient");
+        }
+
+        ingredientParent.SetIngredient(this);
+
+        transform.parent = ingredientParent.GetIngredientFollowTransform();
+        transform.localPosition = Vector3.zero;
     }
 
-    public ClearCounter GetClearCounter()
+    public IIngredientParents GetIngredientParent()
     {
-        return clearCounter;
-    }*/
+        return ingredientParent;
+    }
+
+    public void DestroySelf()
+    {
+        ingredientParent.ClearIngredient();
+        Destroy(gameObject);
+    }
+
+    public static Ingredients SpawnIngredients(ScriptableIngredients scriptableIngredients, IIngredientParents ingredientParents)
+    {
+        Transform ingredientsTransform = Instantiate(scriptableIngredients.prefab);
+        Ingredients ingredients = ingredientsTransform.GetComponent<Ingredients>(); 
+        ingredients.SetIngredientParent(ingredientParents);
+
+        return ingredients;
+    }
 }
