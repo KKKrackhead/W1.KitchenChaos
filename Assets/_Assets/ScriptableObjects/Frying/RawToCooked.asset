@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483c0f1aab072e34093cc9f140d8e03e, type: 3}
+  m_Name: RawToCooked
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 4f45b0e7149d74c45a09ccc48486f8eb, type: 2}
+  output: {fileID: 11400000, guid: 99218b0d4ae80c74cb04132d599ebd9f, type: 2}
+  fryingTimerMax: 3

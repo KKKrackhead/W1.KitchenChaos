@@ -75,7 +75,6 @@ public class PlayerInteractions : MonoBehaviour, IIngredientParents
         }
     }
 
-
     private void SetSelectedCounter(BaseCounter selectedCounter)
     {
         this.selectedCounter = selectedCounter;

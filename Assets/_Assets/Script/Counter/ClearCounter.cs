@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ClearCounter : BaseCounter
 {
-    [SerializeField] private ScriptableIngredients ScriptableIngredients;
+    [SerializeField] private ScriptableFried ScriptableIngredients;
 
     public override void Interact(PlayerInteractions player)
     {
@@ -15,7 +15,27 @@ public class ClearCounter : BaseCounter
         }
         else
         {
-            if (player.HasIngredient()) { }
+            if (player.HasIngredient()) 
+            {
+                if(player.GetIngredient().TryGetPlate(out PlateIngredient plateIngredient))
+                {
+                    if (plateIngredient.TryAddIngredients(GetIngredient().GetScriptableIngredients()))
+                    {
+                        GetIngredient().DestroySelf();
+                    }
+                }
+                else
+                {
+                    if (GetIngredient().TryGetPlate(out  plateIngredient))
+                    {
+                        if (plateIngredient.TryAddIngredients(player.GetIngredient().GetScriptableIngredients()))
+                        {
+                            player.GetIngredient().DestroySelf();
+
+                        }
+                    }
+                }
+            }
             else GetIngredient().SetIngredientParent(player);
         }
     }

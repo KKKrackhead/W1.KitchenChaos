@@ -44,6 +44,20 @@ public class Ingredients : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public bool TryGetPlate(out PlateIngredient plateIngredient)
+    {
+        if (this is PlateIngredient)
+        {
+            plateIngredient = this as PlateIngredient;
+            return true;
+        }
+        else
+        {
+            plateIngredient = null;
+            return false;
+        }
+    }
+
     public static Ingredients SpawnIngredients(ScriptableIngredients scriptableIngredients, IIngredientParents ingredientParents)
     {
         Transform ingredientsTransform = Instantiate(scriptableIngredients.prefab);

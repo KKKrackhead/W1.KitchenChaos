@@ -15,7 +15,7 @@ public class BaseCounter : MonoBehaviour, IIngredientParents
 
     public virtual void InteractAlternate(PlayerInteractions player)
     {
-        Debug.LogError("BaseCounter.InteractAlternate();");
+        //Debug.LogError("BaseCounter.InteractAlternate();");
     }
 
     public Transform GetIngredientFollowTransform()

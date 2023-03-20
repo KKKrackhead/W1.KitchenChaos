@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter, IHasProgress
 {
-    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
-    public class OnProgressChangedEventArgs : EventArgs
-    {
-        public float progressNormalized;
-    }
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
+    
+
+    public event EventHandler OnCut;
 
     [SerializeField] private ScriptableCutIngredients[] scriptableCutIngredientsArray;
 
@@ -28,7 +27,8 @@ public class CuttingCounter : BaseCounter
 
                     ScriptableCutIngredients scriptableCutIngredients = GetCutIngredientsWithInput(GetIngredient().GetScriptableIngredients());
 
-                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs { 
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    { 
                         progressNormalized = (float)cuttingProgress / scriptableCutIngredients.cuttingProgressMax 
                     });
                 }
@@ -37,7 +37,16 @@ public class CuttingCounter : BaseCounter
         }
         else
         {
-            if (player.HasIngredient()) { }
+            if (player.HasIngredient()) 
+            {
+                if (player.GetIngredient().TryGetPlate(out PlateIngredient plateIngredient))
+                {
+                    if (plateIngredient.TryAddIngredients(GetIngredient().GetScriptableIngredients()))
+                    {
+                        GetIngredient().DestroySelf();
+                    }
+                }
+            }
             else GetIngredient().SetIngredientParent(player);
         }
     }
@@ -48,9 +57,11 @@ public class CuttingCounter : BaseCounter
         {
             cuttingProgress++;
 
+            OnCut?.Invoke(this, EventArgs.Empty);
+
             ScriptableCutIngredients scriptableCutIngredients = GetCutIngredientsWithInput(GetIngredient().GetScriptableIngredients());
 
-            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
             {
                 progressNormalized = (float)cuttingProgress / scriptableCutIngredients.cuttingProgressMax
             });
